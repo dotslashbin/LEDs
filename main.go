@@ -13,7 +13,7 @@ func main() {
 	fmt.Println("Running...")
 
 	led := pkgLED.LED{}
-	led.Name = "Led ONE"
+	led.Name = "l-ONE"
 
 	controller := controller.Controller{}
 	controller.Init(led)
@@ -22,6 +22,7 @@ func main() {
 
 	http.HandleFunc("/on", controller.TurnLedOn)
 	http.HandleFunc("/off", controller.TurnLedOff)
+	http.HandleFunc("/", controller.Blink)
 
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		log.Fatal(err)

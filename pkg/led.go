@@ -7,21 +7,21 @@ type Light interface {
 }
 
 type LED struct {
-	On   bool
-	Name string
+	Name  string
+	State string
 }
 
 func (led *LED) GetStatus() string {
-	if led.On {
+	if led.State == "on" {
 		return "LED " + led.Name + " is ON"
 	}
 	return "LED " + led.Name + " is off"
 }
 
 func (led *LED) TurnOn() {
-	led.On = true
+	led.State = "on"
 }
 
 func (led *LED) TurnOff() {
-	led.On = false
+	led.State = "off"
 }
